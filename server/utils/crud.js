@@ -6,7 +6,6 @@ export const getMany = model => async (req, res) => {}
 
 export const createOne = model => async (req, res) => {
     try {
-        //res.send(req.body.time)
         const doc = await model.create({
             _id: new mongoose.Types.ObjectId(),
             time: req.body.time,
@@ -20,7 +19,20 @@ export const createOne = model => async (req, res) => {
 
 export const updateOne = model => async (req, res) => {}
 
-export const removeOne = model => async (req, res) => {}
+export const removeOne = model => async (req, res) => {
+    try {
+        const removed = await model.findOneAndRemove({
+            _id: req.params.id,
+        })
+        if (!removed) {
+            return res.status(400).end()
+        }
+        return res.status(200).json({ data: removed })
+    } catch (e) {
+        console.error(e)
+        res.status(400).end()
+    }
+}
 
 export const crudControllers = model => ({
     removeOne: removeOne(model),

@@ -6,8 +6,11 @@ const irrigationSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    createdOn: Date,
 })
 
-//irrigationSchema.index({ list: 1, name: 1 }, { unique: true })
-
-export const Irrigation = mongoose.model('Irrigation', irrigationSchema)
+export const Irrigation = mongoose.model(
+    'Irrigation',
+    irrigationSchema,
+    'Irrigation'
+)

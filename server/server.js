@@ -9,8 +9,6 @@ import irrigationRouter from './resources/irrigation/irrigation.router'
 
 const app = express()
 
-const ads = [{ title: 'Hello, world (again)!' }]
-
 // adding Helmet to enhance your API's security
 app.use(helmet())
 
@@ -25,15 +23,11 @@ app.use(morgan('combined'))
 
 app.use('/api/irrigation', irrigationRouter)
 
-// app.listen(3001, () => {
-//     console.log(`REST API on http://localhost:3001/api`)
-// })
-
 const start = async () => {
     try {
         await new Database()
         app.listen(3001, () => {
-            console.log(`REST API on http://localhost:3001/api`)
+            console.log(`http://localhost:3001/api`)
         })
     } catch (e) {
         console.error(e)

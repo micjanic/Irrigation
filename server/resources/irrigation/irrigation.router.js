@@ -5,4 +5,6 @@ const router = Router()
 
 router.route('/').post(controllers.createOne)
 
+router.route('/:id').delete(controllers.removeOne)
+
 export default router
