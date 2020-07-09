@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const nodeExternals = require('webpack-node-externals')
 
 module.exports = {
     module: {
@@ -19,4 +20,5 @@ module.exports = {
             filename: './index.html',
         }),
     ],
+    externals: [nodeExternals()],
 }

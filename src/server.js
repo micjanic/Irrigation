@@ -4,8 +4,8 @@ import cors from 'cors'
 import helmet from 'helmet'
 import morgan from 'morgan'
 
-import Database from './utils/database'
-import irrigationRouter from './resources/irrigation/irrigation.router'
+import Database from './server/utils/database'
+import irrigationRouter from './server/resources/irrigation/irrigation.router'
 
 const app = express()
 
