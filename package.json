@@ -2,12 +2,13 @@
     "name": "irrigation",
     "version": "1.0.0",
     "description": "",
-    "main": "index.js",
     "author": "Michael Janicki",
     "license": "ISC",
     "scripts": {
-        "start": "webpack-dev-server --mode development --open --hot --config ./webpack-client.config.js",
-        "build": "webpack --mode production --config ./webpack-client.config.js"
+        "build": "webpack --mode production",
+        "client": "webpack-dev-server --mode development --devtool inline-source-map --hot --open",
+        "server": "nodemon --watch src/server --exec babel-node ./src/index.js",
+        "dev": "concurrently \"npm run server\" \"npm run client\""
     },
     "repository": {
         "type": "git",
