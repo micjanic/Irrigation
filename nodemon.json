@@ -7,7 +7,7 @@
     },
 
     "runOnChangeOnly": false,
-    "watch": ["src/server/"],
+    "watch": ["src/server/", "index.js"],
     "env": {
         "NODE_ENV": "development"
     },

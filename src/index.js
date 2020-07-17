@@ -1,15 +1,44 @@
 import express from 'express'
-import path from 'path'
+import bodyParser from 'body-parser'
+import cors from 'cors'
+import helmet from 'helmet'
+import morgan from 'morgan'
 
-const server = express()
+import Database from './server/utils/database'
+import irrigationRouter from './server/resources/irrigation/irrigation.router'
 
+const app = express()
 const staticMiddleware = express.static('dist')
+app.use(staticMiddleware)
 
-server.use(staticMiddleware)
+app.use(helmet())
 
-server.get('/', function(req, res) {
+// using bodyParser to parse JSON bodies into JS objects
+app.use(bodyParser.json())
+
+// enabling CORS for all requests
+app.use(cors())
+
+// adding morgan to log HTTP requests
+app.use(morgan('combined'))
+
+app.get('/', function(req, res) {
     res.sendFile(__dirname + 'dist/index.html')
 })
 
+app.use('/api/irrigation', irrigationRouter)
+
 const port = 3000
-server.listen(port, () => console.log(`listening on ${port}`))
+
+const start = async () => {
+    try {
+        await new Database()
+        app.listen(port, () => {
+            console.log(`now listening on ${port}`)
+        })
+    } catch (e) {
+        console.error(e)
+    }
+}
+
+start()
