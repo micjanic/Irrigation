@@ -2,7 +2,15 @@ import mongoose from 'mongoose'
 
 export const getOne = model => async (req, res) => {}
 
-export const getMany = model => async (req, res) => {}
+export const getMany = model => async (req, res) => {
+    try {
+        const doc = await model.find({})
+        res.status(201).json(doc)
+    } catch (e) {
+        console.error(e)
+        res.status(400).end()
+    }
+}
 
 export const createOne = model => async (req, res) => {
     try {
