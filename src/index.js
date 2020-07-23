@@ -36,8 +36,8 @@ const start = async () => {
         await new Database()
         app.listen(port, () => {
             console.log(`now listening on ${port}`)
+            serverInit()
         })
-        await serverInit()
     } catch (e) {
         console.error(e)
     }

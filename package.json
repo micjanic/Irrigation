@@ -25,6 +25,7 @@
         "helmet": "^3.23.1",
         "mongoose": "^5.9.19",
         "morgan": "^1.10.0",
+        "node-fetch": "^2.6.0",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
         "rimraf": "^3.0.2"
@@ -36,6 +37,7 @@
         "@babel/plugin-proposal-class-properties": "^7.0.0",
         "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
         "@babel/preset-env": "^7.10.4",
+        "@babel/preset-react": "^7.10.4",
         "@babel/register": "^7.10.1",
         "babel-core": "7.0.0-bridge.0",
         "babel-loader": "^8.1.0",
