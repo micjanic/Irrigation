@@ -7,6 +7,7 @@ const irrigationSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        day: [{ type: String }],
         createdOn: Date,
     },
     {
